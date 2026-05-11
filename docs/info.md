@@ -9,12 +9,12 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Explain how your project works
+The frequency divider consists of a counter module M chosen by the user as an input to the project. When the counter reaches the value M-1, a signal is enabled which will function as a clock of another 7-bit counter and each output of this counter can be used as a clock signal, each signal is divided by 2 in frequency. The pulse of the M module counter was enabled as output but it is not recommended to use it as clock signal, but it can be used in other applications.
 
 ## How to test
 
-Explain how to use your project
+To test the design you only need to choose the M module with the switches on the dedicated inputs.
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+None external hardware needed
