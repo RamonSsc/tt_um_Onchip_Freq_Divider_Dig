@@ -1,6 +1,6 @@
 # Tiny Tapeout project information
 project:
-  title:        "CLK Frequency Divider"      # Project title
+  title:        "Onchip-UIS CLK Frequency Divider"      # Project title
   author:       "Ramon Sarmiento"      # Your name
   discord:      "zhord0326"      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
   description:  "Generates several frequency clock signals from a user-selected M module"      # One line description of what your project does
