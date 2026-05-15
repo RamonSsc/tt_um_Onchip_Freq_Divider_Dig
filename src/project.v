@@ -65,6 +65,6 @@ module tt_um_Onchip_Freq_Divider_Dig (
     assign uio_out[6:0] = second_counter;
 
   // List all unused inputs to prevent warnings
-  wire _unused = &{ena, 1'b0};
+  wire _unused = &{ena, uio_in[7:0], 1'b0};
 
 endmodule
