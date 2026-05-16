@@ -33,24 +33,24 @@ pinout:
   ui[7]: "Module[7]"
 
   # Outputs
-  uo[0]: "CLK_1/2"
-  uo[1]: "CLK_1/4"
-  uo[2]: "CLK_1/8"
-  uo[3]: "CLK_1/16"
-  uo[4]: "CLK_1/32"
-  uo[5]: "CLK_1/64"
-  uo[6]: "CLK_1/128"
-  uo[7]: "Dot"
+  uo[0]: "CLK_1/64"     #A
+  uo[1]: "CLK_1/2"     #B
+  uo[2]: "CLK_1/4"     #C
+  uo[3]: "CLK_1/8"     #D
+  uo[4]: "CLK_1/16"    #E
+  uo[5]: "CLK_1/32"    #F
+  uo[6]: "CLK_1/128"   #G
+  uo[7]: "Dot"         #Dot
 
   # Bidirectional pins
-  uio[0]: "CLK_1/2"
-  uio[1]: "CLK_1/4"
-  uio[2]: "CLK_1/8"
-  uio[3]: "CLK_1/16"
-  uio[4]: "CLK_1/32"
-  uio[5]: "CLK_1/64"
-  uio[6]: "CLK_1/128"
-  uio[7]: "Module M signal"
+  uio[0]: "Module M signal"
+  uio[1]: "CLK_1/2"
+  uio[2]: "CLK_1/4"
+  uio[3]: "CLK_1/8"
+  uio[4]: "CLK_1/16"
+  uio[5]: "CLK_1/32"
+  uio[6]: "CLK_1/64"
+  uio[7]: "CLK_1/128"
 
 # Do not change!
 yaml_version: 6
