@@ -33,14 +33,14 @@ pinout:
   ui[7]: "Module[7]"
 
   # Outputs
-  uo[0]: ""
-  uo[1]: ""
-  uo[2]: ""
-  uo[3]: ""
-  uo[4]: ""
-  uo[5]: ""
-  uo[6]: ""
-  uo[7]: ""
+  uo[0]: "CLK_1/2"
+  uo[1]: "CLK_1/4"
+  uo[2]: "CLK_1/8"
+  uo[3]: "CLK_1/16"
+  uo[4]: "CLK_1/32"
+  uo[5]: "CLK_1/64"
+  uo[6]: "CLK_1/128"
+  uo[7]: "Dot"
 
   # Bidirectional pins
   uio[0]: "CLK_1/2"
