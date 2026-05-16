@@ -17,27 +17,24 @@ module tt_um_Onchip_Freq_Divider_Dig (
 );
 
   //Initialize signals
-    wire reset = !rst_n; //use a positive logic reset
     reg [7:0] counter;
     reg [6:0] second_counter;
     wire [7:0] comp;
     wire signal;
-    wire counter_reset;
-    wire second_counter_clk;
+    wire counter_reset, counter_enable;
     assign uio_oe[7:0] = 8'b11111111; //all bidirectional path used as outputs
-    assign uo_out[7:0] = 8'd0; //no 7-segment used
 
     //Project
-    assign comp = ui_in - 1;
+    assign comp = (ui_in == 8'd0) ? 8'd0 : (ui_in - 8'd1);
     assign signal = counter >= comp; //compare the counter
 
     //Principal signal used as rst and clk
     assign counter_reset = signal;
-    assign second_counter_clk = signal;
-    
-    always @(posedge clk or posedge reset) begin
+    assign counter_enable = signal; // Enable the second counter when the signal is high
+
+    always @(posedge clk) begin
         // if reset, set principal path & counter to 0
-        if (reset) begin
+        if (!rst_n) begin
             counter <= 8'd0;
         end 
         else begin
@@ -48,12 +45,12 @@ module tt_um_Onchip_Freq_Divider_Dig (
         end
     end
     
-    always @(posedge second_counter_clk or posedge reset) begin
-        if (reset) begin
+    always @(posedge clk) begin
+        if (!rst_n) begin
             second_counter <= 7'd0;
         end 
-        else begin
-            if (second_counter == ((2**7)-1)) 
+        else if (counter_enable) begin
+            if (second_counter == ((2**7)-1)) //127
                 second_counter <= 7'd0;
             else 
                 second_counter <= second_counter + 1;
@@ -61,8 +58,12 @@ module tt_um_Onchip_Freq_Divider_Dig (
     end
 
     //outputs
-    assign uio_out[7] = signal;
-    assign uio_out[6:0] = second_counter;
+    assign uo_out[0] = second_counter[5]; 
+    assign uo_out[5:1] = second_counter[4:0]; //show the second counter in the 7-segment
+    assign uo_out[6] = second_counter[6]; //show the second counter in the 7-segment
+    assign uo_out[7] = 1'b1; //always 1 to show the 7-segment dot
+
+    assign uio_out[7:0] = {second_counter[6:0], signal}; //no bidirectional path used as input, all as output
 
   // List all unused inputs to prevent warnings
   wire _unused = &{ena, uio_in[7:0], 1'b0};
